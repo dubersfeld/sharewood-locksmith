@@ -57,6 +57,8 @@ volumes:
 The Keycloak server listen on localhost:8080. Connect to admin console with username admin and password admin. 
 Click Add Realm and import the JSON file: `dockerbuild/keycloak/sharewood-realm.json`
 The sharewood realm is ready to be used. It contains the declaration of fleetwood client and two users with usenames alice and carol.
+
+![alt text](pictures/addRealm.jpg "Add realm page")
  
 ## 1.3. Initializing the Photo PostgreSQL database
 
@@ -90,7 +92,7 @@ carol    | carol.baker@enclume.com   | carol1234
 
 After a successful login the fleetwood welcome page appears.
 
-![alt text](pictures/welcomePage.png "Welcome page")
+![alt text](pictures/welcomePage.jpg "Welcome page")
 
 Then the user can execute the request with tag MyPhotos and display all her existing photos. She also can add new photos, make any photo shared using the Update request and of course delete a photo using the Delete request.
 
@@ -149,7 +151,7 @@ spring:
       on-profile: test
       
       
-spring.datasource.url: jdbc:h2:mem:sharewood;DB\_CLOSE\_ON_EXIT=FALSE
+spring.datasource.url: jdbc:h2:mem:sharewood;DB_CLOSE_ON_EXIT=FALSE
 
 spring.datasource.hikari.initializationFailTimeout: 60000
       
