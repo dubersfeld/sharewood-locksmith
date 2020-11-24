@@ -55,7 +55,7 @@ volumes:
 ``` 
 
 The Keycloak server listen on localhost:8080. Connect to admin console with username admin and password admin. 
-Click Add Realm and import the JSON file: `dockerbuild/keycloak/sharewood-realm.json`
+Click Add Realm and import the JSON file: `tmp/sharewood-realm.json`
 The sharewood realm is ready to be used. It contains the declaration of fleetwood client and two users with usenames alice and carol.
 
 ![alt text](pictures/addRealm.jpg "Add realm page")
