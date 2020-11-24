@@ -81,7 +81,7 @@ Got to directory `dockerbuild/sharewood` and run the script `build`. It creates 
 Go to the directory `docker` and run the command `docker-compose up`. It starts both the sharewood resource server and the Keycloak authorization server.
 In a browser hit the URL localhost:8080 and check that Keycloak is running as expected. Then in `fleetwood` run the command `mvn clean spring-boot:run`. It start the fleetwood client. By hitting the URL localhost:9090 you get this page provided by Keycloak: 
  
-![alt text](pictures/loginPage.png "Login page")
+![alt text](pictures/loginPage.jpg "Login page")
 
 Login by username or by email address. Two users are registered:
 
