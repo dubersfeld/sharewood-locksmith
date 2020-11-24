@@ -1,0 +1,94 @@
+server: 
+  port: 9091
+  servlet: 
+    context-path: /
+   
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:8432/sharewood
+    username: postgres
+    password: password1234
+  jpa: 
+    hibernate: 
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+   
+   
+####### resource server configuration properties
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/auth/realms/sharewood
+      
+      
+jwkSetUri: http://localhost:8080/auth/realms/sharewood/protocol/openid-connect/certs
+ 
+basePhotosURL: http://localhost:9091/photos 
+ 
+photosDir: /home/dominique/Documents/sharewood-locksmith/photos
+photosSaveDir: /home/dominique/Documents/sharewood-locksmith/photosSave
+   
+baseDirPath: /home/dominique/Documents/sharewood-locksmith/photos/
+   
+   
+logging:
+  level:
+    root: INFO
+    com.dub.microservices: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE   
+  
+  
+sharewood: DEV  
+  
+--- 
+
+
+spring:
+  config:
+    activate:
+      on-profile: test
+      
+      
+spring.datasource.url: jdbc:h2:mem:sharewood;DB_CLOSE_ON_EXIT=FALSE
+
+spring.datasource.hikari.initializationFailTimeout: 60000      
+      
+sharewood: TEST      
+ 
+--- 
+
+spring:
+  config:
+    activate:
+      on-profile: docker
+   
+  datasource:
+    url: ${POSTGRES_URL}
+    username: postgres
+    password: password1234
+  jpa: 
+    hibernate: 
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+   
+####### resource server configuration properties
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          #issuer-uri: http://localhost:8080/auth/realms/sharewood
+          issuer-uri: ${ISSUER_URI}
+      
+ 
+#jwkSetUri: http://localhost:8080/auth/realms/sharewood/protocol/openid-connect/certs
+      
+jwkSetUri: ${JWKSET_URI}   
+   
+    
+baseDirPath: /tmp/photos/
+
+  
+sharewood: DOCKER  
+   

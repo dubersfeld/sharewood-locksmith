@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+		xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Update Photo</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+</head>
+
+<body>
+
+	<h1 class="display" th:text="'UpdatePhoto'"></h1><br /><br />
+   
+  
+   
+    <div class="display" th:each="photo : ${photos}">
+    	
+    	<div th:with="title=${photo.title},id=${photo.id},username=${photo.username},shared=${photo.shared}">
+     	<p th:text="'photo Id: ' + ${photo.id}" /> 
+     	<p th:text="'photo title: ' + ${photo.title}" />
+     	<p th:text="'shared: ' + ${photo.shared}" />     
+    	<img th:src="@{'/sharewood/photosList/'} + ${photo.id}"><br/><br/>       
+     
+     <form action="#" th:action="@{/updatePhoto2}"  method="post">
+			<p><input type="hidden" name="id" th:value="${id}" th:readonly="readonly"/></p>
+    		<p><input type="hidden" name="title" th:value="${title}" th:readonly="readonly"/></p>
+			<p><input type="hidden" name="username" th:value="${username}" th:readonly="readonly"/></p>
+      		<p><span th:text="'Photo shared: '"></span></p>           
+        	<p><input type="radio" name="shared" th:value="'false'" th:checked="${shared} ? null : 'checked'"/><span th:text="'false'"></span></p>
+        	<p><input type="radio" name="shared" th:value="'true'" th:checked="${shared} ? 'checked' : null"/><span th:text="'true'"></span></p>
+      	 
+	  	<p><input type="submit" th:value="'Valid'" /> <input type="reset" th:value="'Reset'" /></p>
+	</form>
+	</div>
+	 <p th:text="'cochon: ' + ${compo}"/>
+    </div>
+  	
+		
+
+</body>
+</html>

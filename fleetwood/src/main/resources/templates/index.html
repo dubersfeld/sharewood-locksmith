@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Welcome</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+
+
+<div class="container">
+
+    <h1>Welcome to Fleetwood</h1>
+
+    <div class="row">
+
+        <div class="col">
+            <p>A nice site to share photos</p>
+        </div>
+
+        <div class="col">
+            <p th:text="'Hello ' + ${fullname}"></p>
+        </div>
+
+    </div>
+       
+    <div class="jumbotron">
+        <a class="btn btn-primary" href="#" role="button"
+           th:href="@{/photosMyWith}">My Photos</a>
+    </div>
+    
+    <div class="jumbotron">
+        <a class="btn btn-primary" href="#" role="button"
+           th:href="@{/photosSharedWith}">Shared Photos</a>
+    </div>
+    
+    <div class="jumbotron">
+        <a class="btn btn-primary" href="#" role="button"
+           th:href="@{/updatePhoto}">UpdatePhoto</a>
+    </div>
+     
+    <div class="jumbotron">
+        <a class="btn btn-primary" href="#" role="button"
+           th:href="@{/createPhotoMulti}">CreatePhoto</a>
+    </div>
+    
+    <div class="jumbotron">
+        <a class="btn btn-primary" href="#" role="button"
+           th:href="@{/deletePhoto}">DeletePhoto</a>
+    </div>
+ 
+     
+    
+</div>
+</body>
+</html>

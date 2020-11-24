@@ -1,0 +1,16 @@
+#!/bin/bash
+
+TOKEN=eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJVazVqTGNpTTM5S2NZdTNNVWo2QkxDTTZzSzJqU1J2N3ZrQVZGM2otdmkwIn0.eyJleHAiOjE2MDMzMDQ5NTQsImlhdCI6MTYwMzMwNDg5NCwianRpIjoiOWRmMDNjNjYtNTVhZi00ZjFiLWJhYmQtZTBmMzQyOGE3ODA5IiwiaXNzIjoiaHR0cDovLzE5Mi4xNjguMS4yNDo4MDgwL2F1dGgvcmVhbG1zL21hc3RlciIsInN1YiI6ImQ5ODY5N2YxLWUxNzQtNDg2ZC04NDAxLWMxYTYwM2VlOTZkNSIsInR5cCI6IkJlYXJlciIsImF6cCI6ImFkbWluLWNsaSIsInNlc3Npb25fc3RhdGUiOiI2MzY3NTlhNC0yMGRmLTQwM2YtYjE5MC1mOTcxMThjMGZhNzciLCJhY3IiOiIxIiwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhZG1pbiJ9.VUj0sn3a3O_qWk6IAORY5nn3QRdR_A1OWI45NEhbU5fgqzrufTmeigHDErr3zANRyQaDrw8crzCvpyY7oZARNl_G5Ybss7GWtV6w0fz7Tjlk-32GH2DzR6HI8YE2UVTd-8Xq5JoFMYpoaCrd6B1qaZp6_MQTxyHjS2a8UKMLS2WcXXa55DGuQtjKN1wE1XQdEoxzHi_TogG6_t9CMNrHaeHpm5C3efasGJZ6g6QUjnjiHlydniUQFIXMTpcBl_1rEZ58BsAKsUrfIvI7FC2nXqbXvxEgb45dgviZ_JhlRX0O2tT_p5NFw59_xaDEqtsNTY_xm-dwyaiXUA0mHeEFPw
+
+echo $TOKEN
+
+#curl --location --request POST 'http://localhost:8080/auth/admin/realms/library-client/users' \
+#--header 'Content-Type: application/json' \
+#--header "Authorization: Bearer $TOKEN" \
+#--data-raw '{"firstName":"Paul","lastName":"Enclume", "email":"penclume@test.com", "enabled":"true", "username":"penclume"}'
+
+
+echo "\n"
+echo " * user creation\n"
+curl -v http://192.168.1.24:8080/auth/admin/realms/workshop/users -H "Content-Type: application/json" -H "Authorization: bearer $TOKEN"   --data '{"firstName":"xyz","lastName":"xyz", "email":"demo2@gmail.com", "enabled":"true"}'
+

@@ -1,0 +1,72 @@
+{
+  "realm" : "sharewood",
+  "users" : [ {
+    "id" : "91b4dfae-1014-4c68-bda6-b2f42eb7e392",
+    "createdTimestamp" : 1603353392883,
+    "username" : "alice",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : true,
+    "firstName" : "Alice",
+    "lastName" : "Carrol",
+    "email" : "alice.carrol@enclume.com",
+    "credentials" : [ {
+      "id" : "2f6208d0-6cb4-4345-9e8a-65c9cffb7117",
+      "type" : "password",
+      "createdDate" : 1603353419060,
+      "secretData" : "{\"value\":\"3KAuSAUbyeerOuhLflQopSQRrIWEn8G/gHfMEoQCz0zZ/a2rE8UpiNV4DCYzHcPLXs2XxS5J9Bo9sCQGlr55KQ==\",\"salt\":\"FcaTNC8kYqufbtpmtUrlFw==\"}",
+      "credentialData" : "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\"}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "library_user", "offline_access", "uma_authorization", "sharewood_user" ],
+    "clientRoles" : {
+      "account" : [ "view-profile", "manage-account" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ "/library_user", "/sharewood_user" ]
+  }, {
+    "id" : "c8f285ed-00b4-4b25-9134-1f7a61f060aa",
+    "createdTimestamp" : 1603353500612,
+    "username" : "carol",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : true,
+    "firstName" : "Carol",
+    "lastName" : "Baker",
+    "email" : "carol.baker@enclume.com",
+    "credentials" : [ {
+      "id" : "bd5d84ea-7a4d-48dc-82f3-abbe04e8c16c",
+      "type" : "password",
+      "createdDate" : 1603353529396,
+      "secretData" : "{\"value\":\"EpASsHHe5tjtr7jNa1XZCKAYjEdztcQ49bxuny7cPZQcE1IOop2g90LAEL/bunjIkCnl/K5Widw355IkuWk59g==\",\"salt\":\"mZz4eb2Ys34NJZNSq5rHzA==\"}",
+      "credentialData" : "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\"}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "offline_access", "uma_authorization", "library_curator" ],
+    "clientRoles" : {
+      "account" : [ "view-profile", "manage-account" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ "/library_curator", "/sharewood_user" ]
+  }, {
+    "id" : "56fb5b8a-22b9-4bd6-b24a-671b293806b6",
+    "createdTimestamp" : 1603352924183,
+    "username" : "service-account-fleetwood",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "serviceAccountClientId" : "fleetwood",
+    "credentials" : [ ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "offline_access", "uma_authorization" ],
+    "clientRoles" : {
+      "fleetwood" : [ "uma_protection" ],
+      "account" : [ "view-profile", "manage-account" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  } ]
+}

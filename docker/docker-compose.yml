@@ -1,0 +1,71 @@
+version: '3.4'
+
+services:
+
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_DB=keycloak
+      - POSTGRES_USER=keycloak
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - keycloak:/var/lib/postgresql/data
+
+  keycloak:
+    image: jboss/keycloak:latest
+    environment:
+      - DB_VENDOR=postgres
+      - DB_ADDR=postgres
+      - DB_DATABASE=keycloak
+      - DB_USER=keycloak
+      - DB_PASSWORD=password
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+
+  postgres-sharewood:
+    image: postgres
+    environment:
+      - POSTGRES_DB=sharewood
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password1234
+    ports:
+      # host:container
+      - 8432:5432  
+    volumes:
+      - sharewood:/var/lib/postgresql/data
+
+  sharewood-server:
+    image: sharewood-server:latest
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - POSTGRES_URL=jdbc:postgresql://postgres-sharewood:5432/sharewood
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password1234
+      - POSTGRESQLSERVER_HOST=postgres-sharewood
+      - POSTGRESQLSERVER_PORT=5432
+      - ISSUER_URI=http://keycloak:8080/auth/realms/sharewood
+      - JWKSET_URI=http://keycloak:8080/auth/realms/sharewood/protocol/openid-connect/certs
+ 
+    ports:
+      - 9091:9091
+    volumes:
+      - photos:/tmp/photos 
+
+volumes:
+
+  keycloak:
+    external: true
+    name: keycloak-data
+  sharewood:
+    external: true
+    name: sharewood-data  
+  photos:
+    external: true
+    name: sharewood-photos  
+      
+
+

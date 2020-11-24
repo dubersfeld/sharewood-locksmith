@@ -1,0 +1,32 @@
+server:
+  port: 9090
+  
+spring:
+  thymeleaf:
+    cache: false
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: 'fleetwood'
+            client-secret: '9f20f54c-c55a-41a1-a4c1-6082f3a83724'
+            authorizationGrantType: authorization_code
+            redirect-uri-template: '{baseUrl}/login/oauth2/code/{registrationId}'
+            #redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'
+            scope: openid
+        provider:
+          keycloak:
+            issuerUri: http://localhost:8080/auth/realms/sharewood
+            #issuerUri: http://192.168.1.24:8080/auth/realms/workshop
+            user-name-attribute: name  
+            
+#spring.main.allow-bean-definition-overriding: true
+                        
+# server, not client
+sharewood:
+  server: http://localhost:9091
+  
+sharewoodPhotosBaseURL: http://localhost:9091/photos  
+
+tempDir: /home/dominique/Pictures/client/tmp/

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+		xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Update Photo</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+</head>
+
+<body>
+
+	<a th:href="@{/backHome}" th:text="'home'"></a><br /><br />
+
+	<h1 th:text="'Update Photo'"></h1><br /><br />
+	
+    <form action="#" th:action="@{/updatePhoto1}" th:object="${getPhoto}" method="post">
+    	<p><span th:text="'photo id: '"></span><input type="text" th:field="*{id}" /></p>
+        <p><input type="submit" th:value="'Valid'" /> <input type="reset" th:value="'Reset'" /></p>
+    </form>
+
+
+</body>
+</html>
+    
+    
