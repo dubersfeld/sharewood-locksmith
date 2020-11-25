@@ -75,6 +75,44 @@ In `sharewood-server` run the script `build`. It creates a Docker image named sh
 Note that the actual build is executed only if all tests are successful. A static path field has to be edited in the test classes ApplicationTests and ServiceTests to match your actual file system. 
 Got to directory `dockerbuild/sharewood` and run the script `build`. It creates an derived image named `sharewood-server:latest` prepopulated with 6 JPG files.
 
+## 1.4 Note on the fleetwood client
+
+Here is the application.yml configuration file for fleetwood. The properties of interest are keycloak.client-id and keycloak-client-secret that match the properties declared in the Keycloak sharewood realm. Note that the client itself is user agnostic. All user authentication is delegated to the Keycloak server 
+
+```
+server:
+  port: 9090
+  
+spring:
+  thymeleaf:
+    cache: false
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: 'fleetwood'
+            client-secret: '9f20f54c-c55a-41a1-a4c1-6082f3a83724'
+            authorizationGrantType: authorization_code
+            redirect-uri-template: '{baseUrl}/login/oauth2/code/{registrationId}'
+            #redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'
+            scope: openid
+        provider:
+          keycloak:
+            issuerUri: http://localhost:8080/auth/realms/sharewood
+            user-name-attribute: name  
+            
+#spring.main.allow-bean-definition-overriding: true
+                        
+# server, not client
+sharewood:
+  server: http://localhost:9091
+  
+sharewoodPhotosBaseURL: http://localhost:9091/photos
+
+tempDir: /home/dominique/Pictures/client/tmp/
+``` 
+
 # 2 Running the application
 
 ## 2.1 Running the resource server as a container
