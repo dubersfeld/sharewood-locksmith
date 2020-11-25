@@ -2,8 +2,8 @@
 I present here a new version of a previous photo sharing demo project. This version uses a local Keycloak authorization server and OIDC protocol.
 Here are the prerequisites for running this project:
 
-A recent Docker installed (I use 19.03.13)
-A recent Maven installed (I use 3.6.0)
+A recent Docker version installed (I use 19.03.13)
+A recent Maven version installed (I use 3.6.0)
 
 An IDE such as STS can help but is not required.
 
@@ -72,7 +72,7 @@ The `sharewood` database is now persisted in the dedicated volume and ready to b
 ## 1.4 Creating the sharewood-server container
 
 In `sharewood-server` run the script `build`. It creates a Docker image named sharewood-server:0.0.1-SNAPSHOT.
-Note that the actual build is executed only if all tests are successful. Some static paths have to be edited to match the actual file system. 
+Note that the actual build is executed only if all tests are successful. A static path field has to be edited in the test classes ApplicationTests and ServiceTests to match your actual file system. 
 Got to directory `dockerbuild/sharewood` and run the script `build`. It creates an derived image named `sharewood-server:latest` prepopulated with 6 JPG files.
 
 # 2 Running the application
